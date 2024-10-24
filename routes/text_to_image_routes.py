@@ -1,5 +1,6 @@
 import uuid
 
+from utils.reformatPrompt import reformatPrompt
 from utils.surpriseCharacter import surpriseCharacter
 from utils.text_to_image_utils import text_to_image
 from flask import Blueprint, request, send_file
@@ -50,7 +51,7 @@ def textToImage():
         point_of_view=point_of_view,
         background=background,
         art_style=art_style,
-        person_group_detail=person_group_detail
+        person_group_detail=reformatPrompt(person_group_detail)
     )
 
     image.save("./content/"+filename)
