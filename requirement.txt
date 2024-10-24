@@ -1,0 +1,7 @@
+Flask==1.1.2
+torch==1.7.1
+Pillow==8.2.0
+diffusers==0.6.0
+transformers==4.10.0
+base64  
+uuid
