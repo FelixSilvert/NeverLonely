@@ -44,8 +44,8 @@ def text_to_image(artist_style, negative_prompt_value, num_inference_steps_value
 
     if avatar_or_illustration == "Illustration":
         if person_group_detail != "":
-            prompt_text = "Illustration of a" + person_group_detail + \
-                "for a publication on social networks"
+            prompt_text = "Seflie of " + person_group_detail + \
+                " highly detailed face and eyes, for a publication on social networks, 64K, UHD, HDR, large angle, Fish-eye lens, by a professional photograph, vivid colors, bokeh"
         else:
             prompt_text = "Illustration of a party with a group of friends for a publication on social networks"
         if artist_style != "":
@@ -69,25 +69,25 @@ def text_to_image(artist_style, negative_prompt_value, num_inference_steps_value
                     prompt = prompt_text
                     generator = torch.Generator("cuda")
                     image = pipe(prompt, generator=generator,
-                                 negative_prompt=negative_prompt_value).images[0]
+                                 negative_prompt=negative_prompt_value, height=512, width=512).images[0]
                     return image
                 else:
                     prompt = prompt_text
                     generator = torch.Generator("cuda")
                     image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                                 guidance_scale=guidance_scale_value).images[0]
+                                 guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                     return image
             if guidance_scale_value == "":
                 prompt = prompt_text
                 generator = torch.Generator("cuda")
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value).images[0]
+                             num_inference_steps=num_inference_steps_value, height=512, width=512).images[0]
                 return image
             else:
                 prompt = prompt_text
                 generator = torch.Generator("cuda")
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value).images[0]
+                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                 return image
         if avatar_or_illustration == "Illustration":
             if num_inference_steps_value == "":
@@ -95,25 +95,25 @@ def text_to_image(artist_style, negative_prompt_value, num_inference_steps_value
                     prompt = prompt_text
                     generator = torch.Generator("cuda")
                     image = pipe(prompt, generator=generator,
-                                 negative_prompt=negative_prompt_value).images[0]
+                                 negative_prompt=negative_prompt_value, height=512, width=512).images[0]
                     return image
                 else:
                     prompt = prompt_text
                     generator = torch.Generator("cuda")
                     image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                                 guidance_scale=guidance_scale_value).images[0]
+                                 guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                     return image
             if guidance_scale_value == "":
                 prompt = prompt_text
                 generator = torch.Generator("cuda")
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value).images[0]
+                             num_inference_steps=num_inference_steps_value, height=512, width=512).images[0]
                 return image
             else:
                 prompt = prompt_text
                 generator = torch.Generator("cuda")
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value).images[0]
+                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                 return image
     else:
         if avatar_or_illustration == "Avatar":
@@ -122,25 +122,25 @@ def text_to_image(artist_style, negative_prompt_value, num_inference_steps_value
                     prompt = prompt_text
                     generator = torch.Generator("cuda").manual_seed(seed)
                     image = pipe(prompt, generator=generator,
-                                 negative_prompt=negative_prompt_value).images[0]
+                                 negative_prompt=negative_prompt_value, height=512, width=512).images[0]
                     return image
                 else:
                     prompt = prompt_text
                     generator = torch.Generator("cuda").manual_seed(seed)
                     image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                                 guidance_scale=guidance_scale_value).images[0]
+                                 guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                     return image
             if guidance_scale_value == "":
                 prompt = prompt_text
                 generator = torch.Generator("cuda").manual_seed(seed)
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value).images[0]
+                             num_inference_steps=num_inference_steps_value, height=512, width=512).images[0]
                 return image
             else:
                 prompt = prompt_text
                 generator = torch.Generator("cuda").manual_seed(seed)
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value).images[0]
+                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                 return image
         if avatar_or_illustration == "Illustration":
             if num_inference_steps_value == "":
@@ -148,23 +148,23 @@ def text_to_image(artist_style, negative_prompt_value, num_inference_steps_value
                     prompt = prompt_text
                     generator = torch.Generator("cuda").manual_seed(seed)
                     image = pipe(prompt, generator=generator,
-                                 negative_prompt=negative_prompt_value).images[0]
+                                 negative_prompt=negative_prompt_value, height=512, width=512).images[0]
                     return image
                 else:
                     prompt = prompt_text
                     generator = torch.Generator("cuda").manual_seed(seed)
                     image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                                 guidance_scale=guidance_scale_value).images[0]
+                                 guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                     return image
             if guidance_scale_value == "":
                 prompt = prompt_text
                 generator = torch.Generator("cuda").manual_seed(seed)
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value).images[0]
+                             num_inference_steps=num_inference_steps_value, height=512, width=512).images[0]
                 return image
             else:
                 prompt = prompt_text
                 generator = torch.Generator("cuda").manual_seed(seed)
                 image = pipe(prompt, generator=generator, negative_prompt=negative_prompt_value,
-                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value).images[0]
+                             num_inference_steps=num_inference_steps_value, guidance_scale=guidance_scale_value, height=512, width=512).images[0]
                 return image
