@@ -1,5 +1,4 @@
-from flask import Flask, request, render_template, jsonify
-from flask import Flask, request, Blueprint, render_template
+from flask import request, Blueprint, render_template, jsonify
 import base64
 import io
 from PIL import Image
@@ -35,7 +34,6 @@ def upload_mask():
 
     # change the red color to white
     data = black_bg.getdata()
-    print(data)
     newData = []
     for item in data:
         if item[0] == 0 and item[1] == 0 and item[2] == 0:
