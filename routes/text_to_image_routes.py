@@ -1,4 +1,7 @@
 import uuid
+
+from utils.reformatPrompt import reformatPrompt
+from utils.surpriseCharacter import surpriseCharacter
 from utils.text_to_image_utils import text_to_image
 from flask import Blueprint, request, send_file
 from random import randint
@@ -15,7 +18,6 @@ def get_param(param_name, default_value=None):
     if not value:
         return default_value
     return value
-
 
 @textToImage_routes.route('/', methods=['GET'])
 def textToImage():
@@ -36,7 +38,7 @@ def textToImage():
     # Generate a unique filename using UUID
     filename = f'image_{uuid.uuid4().hex}.png'
 
-    text_to_image(
+    image, prompt = text_to_image(
         artist_style=artist_style,
         negative_prompt_value=negative_prompt_value,
         num_inference_steps_value=num_inference_steps_value,
@@ -49,7 +51,36 @@ def textToImage():
         point_of_view=point_of_view,
         background=background,
         art_style=art_style,
+        person_group_detail=reformatPrompt(person_group_detail)
+    )
+
+    image.save("./content/"+filename)
+
+    return send_file("./content/"+filename, mimetype='image/png')
+
+
+@textToImage_routes.route('/surpriseMe', methods=['GET'])
+def surpriseMe():
+    person_group_detail = surpriseCharacter()
+
+    image, prompt = text_to_image(
+        artist_style="",
+        negative_prompt_value="",
+        num_inference_steps_value="",
+        guidance_scale_value="",
+        avatar_or_illustration="",
+        seed="",
+        lighting="",
+        environment="",
+        color_scheme="",
+        point_of_view="",
+        background="",
+        art_style="",
         person_group_detail=person_group_detail
-    ).save("./content/"+filename)
+    )
+
+    filename = f'image_{uuid.uuid4().hex}.png'
+
+    image.save("./content/"+filename)
 
     return send_file("./content/"+filename, mimetype='image/png')
