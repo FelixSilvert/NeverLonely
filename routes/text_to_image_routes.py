@@ -1,6 +1,8 @@
+import uuid
 from utils.text_to_image_utils import text_to_image
-from flask import Blueprint, request
+from flask import Blueprint, request, send_file
 from random import randint
+
 
 # Create a Blueprint for imageToImage routes
 textToImage_routes = Blueprint('textToImage_routes', __name__)
@@ -31,7 +33,10 @@ def textToImage():
     art_style = get_param('art_style', "")
     person_group_detail = get_param('person_group_detail', "")
 
-    return text_to_image(
+    # Generate a unique filename using UUID
+    filename = f'image_{uuid.uuid4().hex}.png'
+
+    text_to_image(
         artist_style=artist_style,
         negative_prompt_value=negative_prompt_value,
         num_inference_steps_value=num_inference_steps_value,
@@ -45,4 +50,6 @@ def textToImage():
         background=background,
         art_style=art_style,
         person_group_detail=person_group_detail
-    )
+    ).save("/content/"+filename)
+
+    return send_file(filename, mimetype='image/png')
