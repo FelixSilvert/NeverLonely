@@ -1,7 +1,5 @@
-import numpy as np
-import base64
-from flask import Flask, render_template, request, jsonify
-import requests
+
+from flask import Flask
 # from routes.auth import auth_routes
 # from routes.image_to_image import imageToImage_routes
 from routes.text_to_image_routes import textToImage_routes
@@ -27,4 +25,4 @@ app.register_blueprint(generateManualyMask_routes,
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
