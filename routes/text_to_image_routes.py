@@ -50,6 +50,6 @@ def textToImage():
         background=background,
         art_style=art_style,
         person_group_detail=person_group_detail
-    ).save("/content/"+filename)
+    ).save("./content/"+filename)
 
-    return send_file(filename, mimetype='image/png')
+    return send_file("./content/"+filename, mimetype='image/png')
