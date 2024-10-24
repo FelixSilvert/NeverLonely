@@ -46,4 +46,7 @@ def upload_mask():
     # Save the image as a PNG file
     black_bg.save('mask_image.png')
 
-    return jsonify({'status': 'Mask saved!'})
+    # Replace 'some_other_route' with your actual route name
+    other_url = url_for(
+        'http://127.0.0.1/inpainting/manualy?mask_image=mask_image.png')
+    return redirect(other_url)
