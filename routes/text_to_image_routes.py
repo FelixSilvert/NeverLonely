@@ -36,7 +36,7 @@ def textToImage():
     # Generate a unique filename using UUID
     filename = f'image_{uuid.uuid4().hex}.png'
 
-    text_to_image(
+    image, prompt = text_to_image(
         artist_style=artist_style,
         negative_prompt_value=negative_prompt_value,
         num_inference_steps_value=num_inference_steps_value,
@@ -50,6 +50,8 @@ def textToImage():
         background=background,
         art_style=art_style,
         person_group_detail=person_group_detail
-    ).save("./content/"+filename)
+    )
+
+    image.save("./content/"+filename)
 
     return send_file("./content/"+filename, mimetype='image/png')
